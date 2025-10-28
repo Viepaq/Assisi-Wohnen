@@ -379,7 +379,7 @@ export default function Home() {
   const ContentBlockFour = () => (
     <section className="py-16 md:py-24 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center md:text-left mb-6 md:mb-0">
+        <div className="text-center md:text-left mb-6 md:mb-12">
           <SectionHeading
             center
             serifText="Unser Charisma"
