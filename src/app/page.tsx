@@ -584,58 +584,16 @@ export default function Home() {
             backgroundImage: 'url(/Menucomic.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            animation: 'backgroundFadeIn 0.25s ease-out'
+            animation: 'fadeInQuick 0.15s ease-out'
           }}
         >
           <style dangerouslySetInnerHTML={{__html: `
-            @keyframes backgroundFadeIn {
+            @keyframes fadeInQuick {
               from {
                 opacity: 0;
               }
               to {
                 opacity: 1;
-              }
-            }
-            
-            @keyframes fadeInDelayed {
-              0% {
-                opacity: 0;
-              }
-              30% {
-                opacity: 0;
-              }
-              100% {
-                opacity: 1;
-              }
-            }
-            
-            @keyframes slideInFromTop {
-              0% {
-                opacity: 0;
-                transform: translateY(-10px);
-              }
-              30% {
-                opacity: 0;
-                transform: translateY(-10px);
-              }
-              100% {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-            
-            @keyframes slideInScale {
-              0% {
-                opacity: 0;
-                transform: scale(0.95) translateY(10px);
-              }
-              30% {
-                opacity: 0;
-                transform: scale(0.95) translateY(10px);
-              }
-              100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
               }
             }
           `}} />
@@ -647,7 +605,6 @@ export default function Home() {
             onClick={toggleMenu}
             className="absolute top-5 left-6 z-20 w-10 h-10 md:w-7 md:h-7 flex items-center justify-center transition-all duration-200 hover:opacity-70 active:scale-95"
             aria-label="Close menu"
-            style={{ animation: 'fadeInDelayed 0.5s ease-out' }}
           >
             <svg 
               width="32" 
@@ -663,20 +620,14 @@ export default function Home() {
               <line x1="21" y1="7" x2="7" y2="21" />
             </svg>
           </button>
-          <div 
-            className="absolute top-5 left-20 md:left-16 z-10"
-            style={{ animation: 'slideInFromTop 0.5s ease-out' }}
-          >
+          <div className="absolute top-5 left-20 md:left-16 z-10">
             <h1 className="text-lg md:text-xl font-serif tracking-widest uppercase">
               <span style={{ color: COLORS.RED }}>Assisi</span>
               {' '}
               <span style={{ color: '#F5EFE6' }}>Wohnen</span>
             </h1>
           </div>
-          <div 
-            className="relative z-10 h-full flex items-center justify-center px-6"
-            style={{ animation: 'slideInScale 0.5s ease-out' }}
-          >
+          <div className="relative z-10 h-full flex items-center justify-center px-6">
             <nav className="flex flex-col gap-10 md:gap-8 items-center w-full">
               <Link 
                 href="/"
