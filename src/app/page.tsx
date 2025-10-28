@@ -45,11 +45,12 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{__html: `
         .burger {
           position: relative;
-          width: 24px;
-          height: 18px;
+          width: 28px;
+          height: 22px;
           background: transparent;
           cursor: pointer;
           display: block;
+          padding: 4px;
         }
 
         .burger input {
@@ -59,7 +60,7 @@ export default function Home() {
         .burger span {
           display: block;
           position: absolute;
-          height: 2px;
+          height: 2.5px;
           width: 100%;
           background: ${scrolled ? COLORS.RED : 'white'};
           border-radius: 9px;
@@ -99,8 +100,24 @@ export default function Home() {
 
         .burger input:checked ~ span:nth-of-type(3) {
           transform: rotate(-45deg);
-          top: 17px;
+          top: 20px;
           left: 3px;
+        }
+
+        @media (min-width: 768px) {
+          .burger {
+            width: 24px;
+            height: 18px;
+            padding: 0;
+          }
+          
+          .burger span {
+            height: 2px;
+          }
+          
+          .burger input:checked ~ span:nth-of-type(3) {
+            top: 17px;
+          }
         }
       `}} />
       
@@ -116,7 +133,7 @@ export default function Home() {
         <span></span>
       </label>
       
-      <span className="ml-4 text-xl font-serif tracking-widest uppercase text-white flex">
+      <span className="ml-4 text-lg md:text-xl font-serif tracking-widest uppercase text-white flex">
         {['A', 's', 's', 'i', 's', 'i', ' ', 'W', 'o', 'h', 'n', 'e', 'n'].map((letter, index) => {
           const totalLetters = 13;
           const fadeStart = index / totalLetters * 0.6;
@@ -149,15 +166,15 @@ export default function Home() {
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
-      <div className="absolute bottom-40 left-12 md:bottom-48 md:left-20">
+      <div className="absolute bottom-32 md:bottom-48 left-0 right-0 md:left-20 md:right-auto flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-0">
         <h1 
-          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight max-w-xl"
           style={{ textShadow: `1px 1px 0 ${COLORS.RED}, 2px 2px 0 ${COLORS.RED}, 3px 3px 0 ${COLORS.RED}, 4px 4px 0 ${COLORS.RED}, 5px 5px 10px rgba(0, 0, 0, 0.3)` }}
         >
           Assisi Wohnen
         </h1>
         <p 
-          className="mt-6 text-xl md:text-2xl lg:text-3xl font-serif text-white text-center"
+          className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-serif text-white max-w-xl"
           style={{ textShadow: `1px 1px 0 ${COLORS.RED}, 2px 2px 0 ${COLORS.RED}, 2px 2px 8px rgba(0, 0, 0, 0.3)` }}
         >
           Dein klösterliches Zuhause bei Wien
@@ -173,27 +190,35 @@ export default function Home() {
           {redText}
         </p>
       )}
-      <h2 className="text-4xl font-serif leading-none" style={{ color: COLORS.RED }}>
+      <h2 className="text-3xl md:text-4xl font-serif leading-tight md:leading-none" style={{ color: COLORS.RED }}>
         {serifText}
       </h2>
     </div>
   );
 
   const ContentBlockOne = () => (
-    <section className="py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
+    <section className="py-16 md:py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
       <style dangerouslySetInnerHTML={{__html: `
         .cta {
           border: none;
           background: none;
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
         }
 
         .cta span {
           padding-bottom: 7px;
-          letter-spacing: 4px;
-          font-size: 14px;
+          letter-spacing: 3px;
+          font-size: 13px;
           padding-right: 15px;
           text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+          .cta span {
+            letter-spacing: 4px;
+            font-size: 14px;
+          }
         }
 
         .cta svg {
@@ -238,12 +263,12 @@ export default function Home() {
           center
           serifText="Über Assisi Wohnen"
         />
-        <p className="mt-8 text-lg leading-relaxed font-light" style={{ color: COLORS.BROWN }}>
+        <p className="mt-6 md:mt-8 text-base md:text-lg leading-relaxed font-light px-2" style={{ color: COLORS.BROWN }}>
           Assisi Wohnen ist ein Konzept des Franziskanerordens für gemeinnschaftlich orientiertes Wohnen und Leben an einem klösterlich geprägten Ort. Und das Franziskanerkloster Maria Enzersdorf, unmittelbar bei Wien, ist das erste Kloster, in dem dieses Konzept Wirklichkeit ist. Hier wohnen heute schon rund 10 junge Erwachsenene, die gemeinsam ihren Glauben teilen, den Ort neu zum blühen bringen und von der Spiritualität der Patres profitieren.
         </p>
         <a 
           href="#kontakt" 
-          className="cta inline-flex items-center justify-center mt-8"
+          className="cta inline-flex items-center justify-center mt-6 md:mt-8 active:scale-95 transition-transform"
         >
           <span className="hover-underline-animation">Kontaktiere Uns</span>
           <svg width="15px" height="10px" viewBox="0 0 13 10">
@@ -309,38 +334,38 @@ export default function Home() {
     ];
 
     return (
-      <section ref={sectionRef} className="py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_SECTION }}>
+      <section ref={sectionRef} className="py-16 md:py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_SECTION }}>
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           center
           serifText="Unsere Eckpfeiler"
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-12">
             {cards.map((card, index) => (
           <div 
                 key={index}
-                className="p-8 transition-all duration-700 hover:translate-y-[-4px] flex flex-col"
+                className="p-6 md:p-8 transition-all duration-700 hover:translate-y-[-4px] flex flex-col mx-auto w-full max-w-md md:max-w-none"
             style={{ 
                   borderRadius: '30px',
                   background: '#ffffff',
                   boxShadow: '15px 15px 30px #bebebe, -15px -15px 30px #ffffff',
-                  minHeight: '350px',
+                  minHeight: '320px',
                   opacity: index < visibleCards ? 1 : 0,
                   transform: index < visibleCards ? 'translateY(0)' : 'translateY(30px)',
                 }}
               >
-                <h3 className="text-2xl font-serif mb-4 text-center" style={{ color: '#000000' }}>
+                <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-center" style={{ color: '#000000' }}>
                   {card.title}
             </h3>
-            <p className="text-base leading-relaxed font-light mb-6 flex-grow" style={{ color: COLORS.BROWN }}>
+            <p className="text-sm md:text-base leading-relaxed font-light mb-4 md:mb-6 flex-grow text-center" style={{ color: COLORS.BROWN }}>
                   {card.text}
             </p>
-            <div className="flex justify-center items-center mt-auto" style={{ minHeight: '120px' }}>
+            <div className="flex justify-center items-center mt-auto" style={{ minHeight: '100px' }}>
               <img
                 src={card.logo}
                 alt={`${card.title} Logo`}
-                className="h-24 w-auto object-contain"
+                className="h-20 md:h-24 w-auto object-contain"
               />
           </div>
           </div>
@@ -352,48 +377,58 @@ export default function Home() {
   };
 
   const ContentBlockFour = () => (
-    <section className="py-24 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-          <img
-            src="/Franz.png"
-            alt="Heiliger Franziskus"
-            className="w-full h-auto object-cover rounded-md shadow-lg"
-          />
-        </div>
-        <div>
+    <section className="py-16 md:py-24 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center md:text-left mb-6 md:mb-0">
           <SectionHeading
+            center
             serifText="Unser Charisma"
           />
-          <p className="mt-8 text-lg leading-relaxed font-light" style={{ color: COLORS.BROWN }}>
-            Unsere spirituelle Ausrichtung hat ihr Fundament im Leben und Wirken des Heiligen Franziskus. Die franziskanische DNA prägt das gesamte Projekt: eine Haltung der Einfachheit, Achtsamkeit und Sinnorientierung.
-          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <img
+              src="/Franz.png"
+              alt="Heiliger Franziskus"
+              className="w-full h-auto object-cover rounded-md shadow-lg max-w-md mx-auto md:max-w-none"
+            />
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="hidden md:block">
+              <SectionHeading
+                serifText="Unser Charisma"
+              />
+            </div>
+            <p className="mt-0 md:mt-8 text-base md:text-lg leading-relaxed font-light text-center md:text-left px-2 md:px-0" style={{ color: COLORS.BROWN }}>
+              Unsere spirituelle Ausrichtung hat ihr Fundament im Leben und Wirken des Heiligen Franziskus. Die franziskanische DNA prägt das gesamte Projekt: eine Haltung der Einfachheit, Achtsamkeit und Sinnorientierung.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 
   const Team = () => (
-    <section id="team" className="py-24 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_SECTION, borderColor: '#EDEAE8' }}>
+    <section id="team" className="py-16 md:py-24 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_SECTION, borderColor: '#EDEAE8' }}>
       <div className="max-w-4xl mx-auto text-center">
         <SectionHeading
           center
           serifText="Team"
         />
         
-        <div className="mt-6 flex flex-col items-center gap-4">
+        <div className="mt-8 md:mt-10 flex flex-col items-center gap-4 md:gap-6">
           <div className="flex justify-center opacity-90">
             <img
               src="/Romed.png"
               alt="Romed Neurohr"
-              className="w-40 h-40 object-cover rounded-full shadow-md"
+              className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-md"
             />
           </div>
           <div className="text-center">
-            <h3 className="text-2xl font-serif" style={{ color: COLORS.RED }}>
+            <h3 className="text-xl md:text-2xl font-serif" style={{ color: COLORS.RED }}>
               Romed Neurohr
             </h3>
-            <p className="mt-1 text-base font-light" style={{ color: COLORS.BROWN }}>
+            <p className="mt-1 text-sm md:text-base font-light" style={{ color: COLORS.BROWN }}>
               Hausleiter
             </p>
           </div>
@@ -411,20 +446,20 @@ export default function Home() {
     ];
 
     return (
-      <section className="py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
+      <section className="py-16 md:py-20 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             center
             serifText="Standort"
           />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-lg leading-relaxed font-light" style={{ color: COLORS.BROWN }}>
+          <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="text-center md:text-left order-2 md:order-1">
+              <p className="text-base md:text-lg leading-relaxed font-light px-2 md:px-0" style={{ color: COLORS.BROWN }}>
                 Das Franziskanerkloster Maria Enzersdorf liegt ruhig am Fuß des Liechtensteinparks, nahe der Wiener Stadtgrenze. Es ist gut mit öffentlichen Verkehrsmitteln und dem Auto erreichbar und bietet in unmittelbarer Umgebung Wege für Stille, Gebet und Spaziergänge.
               </p>
             </div>
-            <div className="flex justify-center">
-              <Carousel className="w-full max-w-sm">
+            <div className="flex justify-center w-full order-1 md:order-2">
+              <Carousel className="w-full max-w-full md:max-w-sm px-12 md:px-0">
                 <CarouselContent>
                   {images.map((image, index) => (
                     <CarouselItem key={index}>
@@ -453,37 +488,37 @@ export default function Home() {
   };
 
   const Initiativen = () => (
-    <section className="py-32 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_SECTION }}>
+    <section className="py-16 md:py-32 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_SECTION }}>
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           center
           serifText="Initiativen"
         />
         
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="mb-8">
+        <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="text-center md:text-left">
+            <div className="mb-6 md:mb-8 flex justify-center md:justify-start">
               <img
                 src="/EMCLogo.png"
                 alt="European Mission Campus Logo"
-                className="h-16 w-auto object-contain"
+                className="h-12 md:h-16 w-auto object-contain"
                 style={{ filter: 'brightness(0) saturate(0)' }}
               />
             </div>
             
-            <p className="text-lg leading-relaxed font-light mb-4" style={{ color: COLORS.BROWN }}>
+            <p className="text-base md:text-lg leading-relaxed font-light mb-3 md:mb-4 px-2 md:px-0" style={{ color: COLORS.BROWN }}>
               Junge Katholiken ausbilden, ausrüsten und aussenden, damit sie das Evangelium verkünden und die Kirche in Europa erneuern.
             </p>
-            <p className="text-lg leading-relaxed font-light" style={{ color: COLORS.BROWN }}>
+            <p className="text-base md:text-lg leading-relaxed font-light px-2 md:px-0" style={{ color: COLORS.BROWN }}>
               Eine neue Generation von missionarischen Jüngern inspirieren, ausbilden und aussenden, um Europa neu zu evangelisieren. Wir schaffen einen Raum, in dem junge Menschen ihre Berufung entdecken, in Gemeinschaft wachsen und ausgesandt werden können, um die Kultur durch das Evangelium zu verändern.
             </p>
           </div>
 
-          <div>
+          <div className="flex justify-center">
             <img
               src="/EMCfoto.png"
               alt="European Mission Campus"
-              className="w-full h-auto object-cover rounded-lg"
+              className="w-full h-auto object-cover rounded-lg max-w-md md:max-w-none"
               style={{ maxHeight: '500px' }}
             />
           </div>
@@ -495,37 +530,37 @@ export default function Home() {
   const Footer = () => {
     return (
       <>
-        <footer className="py-20 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_LIGHT, borderColor: '#EDEAE8' }}>
+        <footer className="py-12 md:py-20 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_LIGHT, borderColor: '#EDEAE8' }}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
-              <h3 className="text-2xl font-serif mb-6" style={{ color: COLORS.RED }}>
+              <h3 className="text-xl md:text-2xl font-serif mb-4 md:mb-6" style={{ color: COLORS.RED }}>
                 Assisi Wohnen
               </h3>
-              <p className="text-base mb-2" style={{ color: COLORS.BROWN }}>
+              <p className="text-sm md:text-base mb-2" style={{ color: COLORS.BROWN }}>
                 Hauptstraße 5, 2344 Maria Enzersdorf, Österreich
               </p>
-              <p className="text-base mb-6" style={{ color: COLORS.BROWN }}>
+              <p className="text-sm md:text-base mb-4 md:mb-6" style={{ color: COLORS.BROWN }}>
                 +43 676 845600100
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs md:text-sm text-gray-500">
                 © 2024 Assisi Wohnen. Alle Rechte vorbehalten.
               </p>
             </div>
           </div>
         </footer>
         
-        <div className="py-4 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_SECTION, borderColor: '#EDEAE8' }}>
-          <div className="max-w-6xl mx-auto flex justify-center gap-8">
+        <div className="py-3 md:py-4 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_SECTION, borderColor: '#EDEAE8' }}>
+          <div className="max-w-6xl mx-auto flex justify-center gap-6 md:gap-8">
             <a 
               href="/impressum" 
-              className="text-sm transition-colors hover:opacity-70"
+              className="text-xs md:text-sm transition-colors hover:opacity-70 active:scale-95"
               style={{ color: COLORS.BROWN }}
             >
               Impressum
             </a>
             <a 
               href="#team" 
-              className="text-sm transition-colors hover:opacity-70"
+              className="text-xs md:text-sm transition-colors hover:opacity-70 active:scale-95"
               style={{ color: COLORS.BROWN }}
             >
               Kontakt
@@ -566,41 +601,44 @@ export default function Home() {
           ></div>
           <button 
             onClick={toggleMenu}
-            className="absolute top-5 left-6 z-20 w-7 h-7 flex items-center justify-center transition-all duration-200 hover:opacity-70"
+            className="absolute top-5 left-6 z-20 w-10 h-10 md:w-7 md:h-7 flex items-center justify-center transition-all duration-200 hover:opacity-70 active:scale-95"
             aria-label="Close menu"
           >
             <svg 
-              width="28" 
-              height="28" 
+              width="32" 
+              height="32" 
               viewBox="0 0 28 28" 
               fill="none"
               stroke={COLORS.RED}
               strokeWidth="2.5"
               strokeLinecap="round"
+              className="w-full h-full"
             >
               <line x1="7" y1="7" x2="21" y2="21" />
               <line x1="21" y1="7" x2="7" y2="21" />
             </svg>
           </button>
-          <div className="absolute top-5 left-16 z-10">
-            <h1 className="text-xl font-serif tracking-widest uppercase">
+          <div className="absolute top-5 left-20 md:left-16 z-10">
+            <h1 className="text-lg md:text-xl font-serif tracking-widest uppercase">
               <span style={{ color: COLORS.RED }}>Assisi</span>
               {' '}
               <span style={{ color: '#F5EFE6' }}>Wohnen</span>
             </h1>
           </div>
-          <div className="relative z-10 h-full flex items-center justify-center">
-            <nav className="flex flex-col gap-8 items-center">
+          <div className="relative z-10 h-full flex items-center justify-center px-6">
+            <nav className="flex flex-col gap-10 md:gap-8 items-center w-full">
               <Link 
                 href="/"
-                className="text-6xl md:text-7xl font-serif transition-all duration-300 hover:opacity-70"
+                onClick={toggleMenu}
+                className="text-5xl md:text-6xl lg:text-7xl font-serif transition-all duration-300 hover:opacity-70 active:scale-95 text-center"
                 style={{ color: COLORS.RED }}
               >
                 Home
               </Link>
               <Link 
                 href="/wohnen"
-                className="text-6xl md:text-7xl font-serif transition-all duration-300 hover:opacity-70"
+                onClick={toggleMenu}
+                className="text-5xl md:text-6xl lg:text-7xl font-serif transition-all duration-300 hover:opacity-70 active:scale-95 text-center"
                 style={{ color: COLORS.BROWN }}
               >
                 Wohnen
