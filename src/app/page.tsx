@@ -157,7 +157,7 @@ export default function Home() {
   );
 
   const Hero = () => (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-[70vh] md:h-screen overflow-hidden">
       <img
         src="/Laverna foto .JPG"
         alt="Assisi Wohnen"
@@ -166,7 +166,7 @@ export default function Home() {
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
-      <div className="absolute bottom-48 md:bottom-48 left-0 right-0 md:left-20 md:right-auto flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-0">
+      <div className="absolute bottom-16 md:bottom-48 left-0 right-0 md:left-20 md:right-auto flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-0">
         <h1 
           className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight max-w-xl"
           style={{ textShadow: `1px 1px 0 ${COLORS.RED}, 2px 2px 0 ${COLORS.RED}, 3px 3px 5px rgba(0, 0, 0, 0.2), 4px 4px 5px rgba(0, 0, 0, 0.15)` }}
