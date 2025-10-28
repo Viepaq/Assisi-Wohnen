@@ -263,7 +263,7 @@ export default function Home() {
           center
           serifText="Über Assisi Wohnen"
         />
-        <p className="mt-6 md:mt-8 text-base md:text-lg leading-relaxed font-light px-2" style={{ color: COLORS.BROWN }}>
+        <p className="mt-6 md:mt-10 text-base md:text-lg leading-relaxed font-light px-2" style={{ color: COLORS.BROWN }}>
           Assisi Wohnen ist ein Konzept des Franziskanerordens für gemeinnschaftlich orientiertes Wohnen und Leben an einem klösterlich geprägten Ort. Und das Franziskanerkloster Maria Enzersdorf, unmittelbar bei Wien, ist das erste Kloster, in dem dieses Konzept Wirklichkeit ist. Hier wohnen heute schon rund 10 junge Erwachsenene, die gemeinsam ihren Glauben teilen, den Ort neu zum blühen bringen und von der Spiritualität der Patres profitieren.
         </p>
         <a 
@@ -341,7 +341,7 @@ export default function Home() {
           serifText="Unsere Eckpfeiler"
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-16">
             {cards.map((card, index) => (
           <div 
                 key={index}
@@ -379,7 +379,7 @@ export default function Home() {
   const ContentBlockFour = () => (
     <section className="py-16 md:py-24 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center md:text-left mb-6 md:mb-12">
+        <div className="text-center mb-6 md:hidden">
           <SectionHeading
             center
             serifText="Unser Charisma"
@@ -416,7 +416,7 @@ export default function Home() {
           serifText="Team"
         />
         
-        <div className="mt-8 md:mt-10 flex flex-col items-center gap-4 md:gap-6">
+        <div className="mt-8 md:mt-14 flex flex-col items-center gap-4 md:gap-6">
           <div className="flex justify-center opacity-90">
             <img
               src="/Romed.png"
@@ -452,7 +452,7 @@ export default function Home() {
             center
             serifText="Standort"
           />
-          <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-center md:text-left order-2 md:order-1">
               <p className="text-base md:text-lg leading-relaxed font-light px-2 md:px-0" style={{ color: COLORS.BROWN }}>
                 Das Franziskanerkloster Maria Enzersdorf liegt ruhig am Fuß des Liechtensteinparks, nahe der Wiener Stadtgrenze. Es ist gut mit öffentlichen Verkehrsmitteln und dem Auto erreichbar und bietet in unmittelbarer Umgebung Wege für Stille, Gebet und Spaziergänge.
@@ -495,7 +495,7 @@ export default function Home() {
           serifText="Initiativen"
         />
         
-        <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="text-center md:text-left">
             <div className="mb-6 md:mb-8 flex justify-center md:justify-start">
               <img
