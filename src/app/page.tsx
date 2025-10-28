@@ -453,12 +453,12 @@ export default function Home() {
             serifText="Standort"
           />
           <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="text-center md:text-left order-2 md:order-1">
+            <div className="text-center md:text-left order-1 md:order-1">
               <p className="text-base md:text-lg leading-relaxed font-light px-2 md:px-0" style={{ color: COLORS.BROWN }}>
                 Das Franziskanerkloster Maria Enzersdorf liegt ruhig am Fuß des Liechtensteinparks, nahe der Wiener Stadtgrenze. Es ist gut mit öffentlichen Verkehrsmitteln und dem Auto erreichbar und bietet in unmittelbarer Umgebung Wege für Stille, Gebet und Spaziergänge.
               </p>
             </div>
-            <div className="flex justify-center w-full order-1 md:order-2">
+            <div className="flex justify-center w-full order-2 md:order-2">
               <Carousel className="w-full max-w-full md:max-w-sm px-12 md:px-0">
                 <CarouselContent>
                   {images.map((image, index) => (
