@@ -601,7 +601,7 @@ export default function Home() {
               0% {
                 opacity: 0;
               }
-              60% {
+              30% {
                 opacity: 0;
               }
               100% {
@@ -614,7 +614,7 @@ export default function Home() {
                 opacity: 0;
                 transform: translateY(-10px);
               }
-              50% {
+              30% {
                 opacity: 0;
                 transform: translateY(-10px);
               }
@@ -629,7 +629,7 @@ export default function Home() {
                 opacity: 0;
                 transform: scale(0.95) translateY(10px);
               }
-              60% {
+              30% {
                 opacity: 0;
                 transform: scale(0.95) translateY(10px);
               }
@@ -647,7 +647,7 @@ export default function Home() {
             onClick={toggleMenu}
             className="absolute top-5 left-6 z-20 w-10 h-10 md:w-7 md:h-7 flex items-center justify-center transition-all duration-200 hover:opacity-70 active:scale-95"
             aria-label="Close menu"
-            style={{ animation: 'fadeInDelayed 0.7s ease-out' }}
+            style={{ animation: 'fadeInDelayed 0.5s ease-out' }}
           >
             <svg 
               width="32" 
@@ -665,7 +665,7 @@ export default function Home() {
           </button>
           <div 
             className="absolute top-5 left-20 md:left-16 z-10"
-            style={{ animation: 'slideInFromTop 0.7s ease-out' }}
+            style={{ animation: 'slideInFromTop 0.5s ease-out' }}
           >
             <h1 className="text-lg md:text-xl font-serif tracking-widest uppercase">
               <span style={{ color: COLORS.RED }}>Assisi</span>
@@ -675,7 +675,7 @@ export default function Home() {
           </div>
           <div 
             className="relative z-10 h-full flex items-center justify-center px-6"
-            style={{ animation: 'slideInScale 0.8s ease-out' }}
+            style={{ animation: 'slideInScale 0.5s ease-out' }}
           >
             <nav className="flex flex-col gap-10 md:gap-8 items-center w-full">
               <Link 
