@@ -166,16 +166,16 @@ export default function Home() {
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
-      <div className="absolute bottom-40 md:bottom-48 left-0 right-0 md:left-20 md:right-auto flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-0">
+      <div className="absolute bottom-48 md:bottom-48 left-0 right-0 md:left-20 md:right-auto flex flex-col items-center md:items-start text-center md:text-left px-6 md:px-0">
         <h1 
           className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-tight max-w-xl"
-          style={{ textShadow: `2px 2px 0 ${COLORS.RED}, 3px 3px 0 ${COLORS.RED}, 4px 4px 0 ${COLORS.RED}, 5px 5px 0 ${COLORS.RED}, 6px 6px 12px rgba(0, 0, 0, 0.4)` }}
+          style={{ textShadow: `1px 1px 0 ${COLORS.RED}, 2px 2px 0 ${COLORS.RED}, 3px 3px 5px rgba(0, 0, 0, 0.2), 4px 4px 5px rgba(0, 0, 0, 0.15)` }}
         >
           Assisi Wohnen
         </h1>
         <p 
           className="mt-5 md:mt-6 text-xl sm:text-2xl md:text-2xl lg:text-3xl font-serif text-white max-w-xl"
-          style={{ textShadow: `2px 2px 0 ${COLORS.RED}, 3px 3px 0 ${COLORS.RED}, 3px 3px 10px rgba(0, 0, 0, 0.4)` }}
+          style={{ textShadow: `1px 1px 0 ${COLORS.RED}, 2px 2px 3px rgba(0, 0, 0, 0.15)` }}
         >
           Dein klösterliches Zuhause bei Wien
         </p>
