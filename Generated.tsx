@@ -33,7 +33,7 @@ const App = () => {
 
   // --- SUB-COMPONENTS (Defined within App scope to access COLORS) ---
 
-  const Header = ({ scrolled, toggleMenu }) => (
+  const Header = ({ scrolled, toggleMenu }: { scrolled: boolean; toggleMenu: () => void }) => (
     <header 
       className={`fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4 text-white transition-all duration-300 ${
         scrolled ? 'shadow-md bg-black bg-opacity-30 backdrop-blur-sm' : '' 
@@ -61,7 +61,7 @@ const App = () => {
         alt="Vienna skyline at sunset"
         className="absolute inset-0 object-cover w-full h-full"
         style={{ filter: 'brightness(0.9) saturate(1.1) contrast(1.1)' }}
-        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1200x800/69455B/ffffff/jpg?text=Vienna+Skyline+Sunset" }}
+        onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/1200x800/69455B/ffffff/jpg?text=Vienna+Skyline+Sunset" }}
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
@@ -76,7 +76,7 @@ const App = () => {
     </div>
   );
 
-  const SectionHeading = ({ redText, serifText, center = false }) => (
+  const SectionHeading = ({ redText, serifText, center = false }: { redText?: string; serifText: string; center?: boolean }) => (
     <div className={center ? "text-center" : "text-left"}>
       {redText && (
         <p className="text-sm font-sans tracking-widest uppercase mb-1" style={{ color: COLORS.RED }}>
@@ -114,7 +114,7 @@ const App = () => {
               src="https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Cozy+Bedroom"
               alt="A cozy hotel bedroom"
               className="w-full h-auto object-cover rounded-md"
-              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Cozy+Bedroom" }}
+              onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Cozy+Bedroom" }}
             />
             <a href="#" className="inline-block mt-4 text-xs font-sans tracking-wider uppercase" style={{ color: COLORS.RED, borderBottom: `1px solid ${COLORS.RED}` }}>
               Zu den Zimmern
@@ -125,7 +125,7 @@ const App = () => {
               src="https://placehold.co/600x400/C8CBC9/3A2E2E/jpg?text=Hotel+Facade"
               alt="Hotel exterior with classic facade"
               className="w-full h-auto object-cover rounded-md"
-              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/600x400/C8CBC9/3A2E2E/jpg?text=Hotel+Facade" }}
+              onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/600x400/C8CBC9/3A2E2E/jpg?text=Hotel+Facade" }}
             />
             <a href="#" className="inline-block mt-4 text-xs font-sans tracking-wider uppercase" style={{ color: COLORS.RED, borderBottom: `1px solid ${COLORS.RED}` }}>
               Die Lage
@@ -159,7 +159,7 @@ const App = () => {
               src="https://placehold.co/500x500/A0918F/ffffff/jpg?text=Coffee"
               alt="Coffee cups on a wooden table"
               className="w-full md:w-5/6 h-auto object-cover rounded-md"
-              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/500x500/A0918F/ffffff/jpg?text=Coffee" }}
+              onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/500x500/A0918F/ffffff/jpg?text=Coffee" }}
             />
           </div>
           <div className="flex justify-start">
@@ -167,7 +167,7 @@ const App = () => {
               src="https://placehold.co/500x500/E8E3DF/ffffff/jpg?text=Breakfast"
               alt="Healthy breakfast bowls"
               className="w-full md:w-5/6 h-auto object-cover rounded-md"
-              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/500x500/E8E3DF/ffffff/jpg?text=Breakfast" }}
+              onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/500x500/E8E3DF/ffffff/jpg?text=Breakfast" }}
             />
           </div>
         </div>
@@ -198,7 +198,7 @@ const App = () => {
             src="https://placehold.co/200x200/B25F5F/ffffff/png?text=Portrait"
             alt="Portrait of the hotel owner/designer"
             className="rounded-full w-48 h-48 object-cover border-4 border-white shadow-lg"
-            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/200x200/B25F5F/ffffff/png?text=Portrait" }}
+            onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/200x200/B25F5F/ffffff/png?text=Portrait" }}
           />
         </div>
       </div>
@@ -213,7 +213,7 @@ const App = () => {
             src="https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Collaboration"
             alt="Two people collaborating on laptops"
             className="w-full h-auto object-cover rounded-md"
-            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Collaboration" }}
+            onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/600x400/DCC7C5/3A2E2E/jpg?text=Collaboration" }}
           />
         </div>
         <div>
@@ -235,7 +235,7 @@ const App = () => {
   );
 
   const Footer = () => {
-    const FooterLink = ({ children }) => (
+    const FooterLink = ({ children }: { children: React.ReactNode }) => (
       <a href="#" className="block mb-2 text-sm text-gray-600 hover:text-gray-900 transition-colors">
         {children}
       </a>
@@ -262,7 +262,7 @@ const App = () => {
               src="https://placehold.co/150x150/B25F5F/ffffff/png?text=Map+Illustration"
               alt="Map illustration of the hotel's location"
               className="w-32 h-32 object-contain"
-              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150x150/B25F5F/ffffff/png?text=Map+Illustration" }}
+              onError={(e) => { (e.target as HTMLImageElement).onerror = null; (e.target as HTMLImageElement).src = "https://placehold.co/150x150/B25F5F/ffffff/png?text=Map+Illustration" }}
             />
           </div>
 
