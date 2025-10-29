@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -23,16 +23,37 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
+  
+  // Preload Menu-Hintergrund
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = '/Menucomic.png';
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
   
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 50);
-      // Calculate scroll progress from 0 to 1 over the first 200px
-      setScrollProgress(Math.min(scrollY / 200, 1));
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setScrolled(scrollY > 50);
+          setScrollProgress(Math.min(scrollY / 200, 1));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -163,6 +184,7 @@ export default function Home() {
         alt="Assisi Wohnen"
         className="absolute inset-0 object-cover w-full h-full"
         style={{ filter: 'brightness(0.9) saturate(1.1) contrast(1.1)' }}
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
@@ -282,35 +304,40 @@ export default function Home() {
     </section>
   );
 
-  const ContentBlockTwo = () => {
+  const ContentBlockTwo = React.memo(() => {
     const [visibleCards, setVisibleCards] = useState(0);
     const sectionRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+      let ticking = false;
+      
       const handleScroll = () => {
-        if (!sectionRef.current) return;
+        if (!ticking && sectionRef.current) {
+          window.requestAnimationFrame(() => {
+            if (!sectionRef.current) return;
 
-        const rect = sectionRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        // Berechne wie weit die Section im Viewport ist
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          // Section ist im Viewport
-          const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-          
-          // Zeige Karten basierend auf Scroll-Fortschritt
-          if (scrollProgress > 0.15 && visibleCards < 1) {
-            setVisibleCards(1);
-          } else if (scrollProgress > 0.25 && visibleCards < 2) {
-            setVisibleCards(2);
-          } else if (scrollProgress > 0.35 && visibleCards < 3) {
-            setVisibleCards(3);
-          }
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (rect.top < windowHeight && rect.bottom > 0) {
+              const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+              
+              if (scrollProgress > 0.15 && visibleCards < 1) {
+                setVisibleCards(1);
+              } else if (scrollProgress > 0.25 && visibleCards < 2) {
+                setVisibleCards(2);
+              } else if (scrollProgress > 0.35 && visibleCards < 3) {
+                setVisibleCards(3);
+              }
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       };
 
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial check
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
       
       return () => {
         window.removeEventListener('scroll', handleScroll);
@@ -368,6 +395,7 @@ export default function Home() {
                 src={card.logo}
                 alt={`${card.title} Logo`}
                 className="h-20 md:h-24 w-auto object-contain"
+                loading="lazy"
               />
           </div>
           </div>
@@ -376,9 +404,9 @@ export default function Home() {
       </div>
     </section>
   );
-  };
+  });
 
-  const ContentBlockFour = () => (
+  const ContentBlockFour = React.memo(() => (
     <section className="py-16 md:py-24 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_LIGHT }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6 md:hidden">
@@ -393,6 +421,7 @@ export default function Home() {
               src="/Franz.png"
               alt="Heiliger Franziskus"
               className="w-full h-auto object-cover rounded-md shadow-lg max-w-md mx-auto md:max-w-none"
+              loading="lazy"
             />
           </div>
           <div className="order-1 md:order-2">
@@ -408,9 +437,9 @@ export default function Home() {
         </div>
       </div>
     </section>
-  );
+  ));
 
-  const Team = () => (
+  const Team = React.memo(() => (
     <section id="team" className="py-16 md:py-24 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_SECTION, borderColor: '#EDEAE8' }}>
       <div className="max-w-4xl mx-auto text-center">
         <SectionHeading
@@ -424,6 +453,7 @@ export default function Home() {
               src="/Romed.png"
               alt="Romed Neurohr"
               className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-md"
+              loading="lazy"
             />
           </div>
           <div className="text-center">
@@ -437,9 +467,9 @@ export default function Home() {
         </div>
       </div>
     </section>
-  );
+  ));
 
-  const Standort = () => {
+  const Standort = React.memo(() => {
     const images = [
       { src: "/RP1.png", alt: "Standort Maria Enzersdorf" },
       { src: "/Kirche.png", alt: "Kirche" },
@@ -472,6 +502,7 @@ export default function Home() {
                               src={image.src}
                               alt={image.alt}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                           </CardContent>
                         </Card>
@@ -487,9 +518,9 @@ export default function Home() {
         </div>
       </section>
     );
-  };
+  });
 
-  const Initiativen = () => (
+  const Initiativen = React.memo(() => (
     <section className="py-16 md:py-32 px-6 md:px-20" style={{ backgroundColor: COLORS.BG_SECTION }}>
       <div className="max-w-6xl mx-auto">
         <SectionHeading
@@ -505,6 +536,7 @@ export default function Home() {
                 alt="European Mission Campus Logo"
                 className="h-12 md:h-16 w-auto object-contain"
                 style={{ filter: 'brightness(0) saturate(0)' }}
+                loading="lazy"
               />
             </div>
             
@@ -522,14 +554,15 @@ export default function Home() {
               alt="European Mission Campus"
               className="w-full h-auto object-cover rounded-lg max-w-md md:max-w-none"
               style={{ maxHeight: '500px' }}
+              loading="lazy"
             />
           </div>
         </div>
       </div>
     </section>
-  );
+  ));
 
-  const Footer = () => {
+  const Footer = React.memo(() => {
     return (
       <>
         <footer className="py-12 md:py-20 px-6 md:px-20 border-t" style={{ backgroundColor: COLORS.BG_LIGHT, borderColor: '#EDEAE8' }}>
@@ -571,7 +604,7 @@ export default function Home() {
         </div>
       </>
     );
-  };
+  });
   
   return (
     <div className="font-sans min-h-screen antialiased" style={{ backgroundColor: COLORS.BG_LIGHT }}>
