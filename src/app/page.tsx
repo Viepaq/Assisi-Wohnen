@@ -448,17 +448,9 @@ export default function Home() {
         />
         
         <div className="mt-8 md:mt-14 flex flex-col items-center gap-4 md:gap-6">
-          <div className="flex justify-center opacity-90">
-            <img
-              src="/Romed.png"
-              alt="Romed Neurohr"
-              className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full shadow-md"
-              loading="lazy"
-            />
-          </div>
           <div className="text-center">
             <h3 className="text-xl md:text-2xl font-serif" style={{ color: COLORS.RED }}>
-              Romed Neurohr
+              Max Mustermann
             </h3>
             <p className="mt-1 text-sm md:text-base font-light" style={{ color: COLORS.BROWN }}>
               Hausleiter
