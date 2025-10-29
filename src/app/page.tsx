@@ -184,7 +184,7 @@ export default function Home() {
         alt="Assisi Wohnen"
         className="absolute inset-0 object-cover w-full h-full"
         style={{ filter: 'brightness(0.9) saturate(1.1) contrast(1.1)' }}
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-black opacity-10"></div>
 
